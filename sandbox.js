@@ -1,7 +1,11 @@
-var character = 'luigi';
-console.log(character);
-var inputs = document.querySelectorAll('input');
-console.log(inputs);
-inputs.forEach(function (input) {
-    console.log(input);
-});
+var character = 'mario';
+var age = 30;
+var isBlackBelt = 20;
+var circ = function (diameter) {
+    return diameter * Math.PI;
+};
+// argument must be number 
+console.log(circ(10));
+var names = ['Luigi', 'Mario', 'Yoshi'];
+names.push('Toad');
+// if an array of strings then can only add/replace with strings 
