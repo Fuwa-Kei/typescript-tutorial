@@ -23,3 +23,13 @@ var ninja = {
 // ninja is an arrays of strings, starting with an empty string
 var ninjas = [];
 ninjas.push('hayabusa');
+// can have mixed types in array (union types)
+var mixedArrary = [];
+mixedArrary.push('cyclops');
+mixedArrary.push(3);
+// objects
+var hanabi;
+hanabi = { role: 'marksman', skills: ['fan', 'ulti'] };
+// any types
+var hero = 'natan';
+hero = true;
