@@ -14,4 +14,19 @@ names.push('Toad');
 
 // if an array of strings then can only add/replace with strings 
 
+let mixed = ['ken', 4 'chun-li', 9, true]
+// mixed arrays allowed as log as pre specified 
+// now can replace string with a number
+mixed[0] = 3;
 
+// whan you decalare anything as a specific type that cannot be changed 
+let ninja = {
+    name: 'hanabi',
+    type: 'marksman',
+    kills: 5
+}
+
+// declare an array with its type + the array 
+// ninja is an arrays of strings, starting with an empty string
+let ninjas: string[] = [];
+ninjas.push('hayabusa')
