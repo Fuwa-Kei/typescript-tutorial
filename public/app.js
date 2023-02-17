@@ -20,15 +20,16 @@
 //     }
 // } Above moved to invoices.ts as a sepereate module
 import { Invoice } from './classes/Invoice.js';
+import { ListTemplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/Payments.js';
-let docOne;
-let docTwo;
-docOne = new Invoice('yoshi', 'web work', 250);
-docTwo = new Payment('mario', 'plumbing', 200);
-let docs = [];
-docs.push(docOne);
-docs.push(docTwo);
-console.log(docs);
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+// docOne = new Invoice('yoshi', 'web work', 250);
+// docTwo = new Payment('mario', 'plumbing', 200);
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+// console.log (docs);
 // interfaces
 // interface IsPerson {
 //     name: string;
@@ -53,18 +54,18 @@ console.log(docs);
 //     console.log('hello', person.name)
 // }
 // greetPerson(me);
-// create an object using the class
-const invOne = new Invoice('mario', 'worked on the mario website', 250);
-const invTwo = new Invoice('Luigi', 'worked on the luigi website', 300);
-// can change what the propeties are 
-// invOne.client = 'yoshi';
-// all invoices created using the invoice class can be added
-let invoices = [];
-invoices.push(invOne);
-invoices.push(invTwo);
-invoices.forEach(inv => {
-    console.log(inv.client, inv.amount, inv.format());
-});
+// // create an object using the class
+// const invOne = new Invoice ('mario', 'worked on the mario website', 250);
+// const invTwo = new Invoice ('Luigi', 'worked on the luigi website', 300);
+// // can change what the propeties are 
+// // invOne.client = 'yoshi';
+// // all invoices created using the invoice class can be added
+// let invoices: Invoice[] = [];
+// invoices.push(invOne);
+// invoices.push(invTwo);
+// invoices.forEach(inv => {
+//     console.log(inv.client, inv.amount, inv.format());
+// })
 // grab an anchor tag - the ! tells it that there is an anchor tag on the page 
 // const anchor = document.querySelector('a')!;
 // console.log(anchor.href);
@@ -76,8 +77,18 @@ const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
-// add event listener an pass the event as parameter then grab the values ofthe form 
+// list template instance
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
+// add event listener an pass the event as parameter then grab the values of the form 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    list.render(doc, type.value, 'end');
 });
