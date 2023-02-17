@@ -1,11 +1,20 @@
 "use strict";
-// classes
-// initialise values in a contructor and assign them to the values
+// classes - all classes are public by default, but can assign modifiers
+// initialise values in a constructor and assign them to the values
 class Invoice {
-    constructor(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    // readonly client: string;
+    // private details: string;
+    // public amount: number;
+    // constructor (c: string, d: string, a: number) {
+    //     this.client = c;
+    //     this.details = d;
+    //     this.amount = a;
+    // }
+    // Can shorten the above, but mut have the modifiers for it to work 
+    constructor(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
     }
     format() {
         return `${this.client} owes $${this.amount} for ${this.details}`;
@@ -15,12 +24,14 @@ class Invoice {
 const invOne = new Invoice('mario', 'worked on the mario website', 250);
 const invTwo = new Invoice('Luigi', 'worked on the luigi website', 300);
 // can change what the propeties are 
-invOne.client = 'yoshi';
+// invOne.client = 'yoshi';
 // all invoices created using the invoice class can be added
 let invoices = [];
 invoices.push(invOne);
 invoices.push(invTwo);
-console.log(invoices);
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format());
+});
 // grab an anchor tag - the ! tells it that there is an anchor tag on the page 
 // const anchor = document.querySelector('a')!;
 // console.log(anchor.href);
