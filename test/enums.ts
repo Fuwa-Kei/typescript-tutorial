@@ -14,3 +14,6 @@ const natan: Hero<Object> = {
     skills: {first: 'shooting thing', second: 'push thing', ult: 'double'}
 }
 
+// tuples create strict order for types in an array 
+
+let tup: [string, number, boolean] = ['hanabi', 3, true]
